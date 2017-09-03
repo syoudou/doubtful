@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>デレステ キャラソート 関連性調査結果</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="mt-3 title">デレステ キャラソート 関連性調査結果</h1>
+      <p>2017年8月24日～2017年8月31日の間に呟かれた20014回のデレステキャラソートの結果から、アイドルごとの相関を計算した結果です。<br />
+      1位～30位までの結果を参照し、より上位の組み合わせほど関連性か高いと評価しています。また、アイドル毎の順位も考慮しています。詳細はページ下部をご覧ください。</p>
+      <table id="result" class="table table-bordered table-sm">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+      <p>計算方法。<br />
+      ①それぞれのソート結果の順位にポイントを付けます。ポイントの付け方は1位30pt～30位1ptです。<br />
+      ②各アイドル毎にポイント数の総和を計算します→SUM(A)とします(アイドルAの場合)<br />
+      例：アイドルAの順位が次の場合(5回分) 1位:1回, 5位:1回, 30位:2回, 30位未満または未登場:1回<br />
+      SUM(A)=30pt+26pt+1pt+1pt+0pt=58pt<br />
+      ②ソート結果のアイドルの組み合わせ毎にポイントを乗算します。<br />
+      ④乗算した結果の総和を計算します→SUM(A×B)とします。<br />
+      例：次の3つのソート結果の場合<br />
+      アイドルA 1位 : アイドルB 10位 → 30pt × 21pt = 630pt<br />
+      アイドルA 20位 : アイドルB 13位 → 11pt × 18pt = 198pt<br />
+      アイドルA 5位 : アイドルB 31位 → 26pt × 0pt = 0pt<br />
+      SUM(A×B) = 630pt + 198pt + 0pt = 728pt<br />
+      ⑤上位のアイドルの組み合わせが高くなってしまうので次の計算をします<br />
+      REL(A:B) = SUM(A×B) ÷ SUM(A) ÷ SUM(B)<br />
+      この結果をアイドル同士の関連性(REL(A:B))とします。<br />
+      ⑥上記表では見やすさのため、REL(A:x)の平均値を計算結果から割っています。なので値が1に近いと関連性が低く、1より大きいと正の相関、1より小さいと負の相関という目安にしてください(ここら辺はかなり適当です)
+      </p>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
